@@ -21,7 +21,7 @@ const App: React.FC = () => {
       const getPokemon = async () => {
          // gọi api lấy name và url
          const res = await axios.get(
-            ' httpss://pokeapi.co/api/v2/pokemon?limit=20&offset=20',
+            ' https://pokeapi.co/api/v2/pokemon?limit=20&offset=20',
          );
          setNextUrl(res.data.next);
          // lấy name để đưa vào api
