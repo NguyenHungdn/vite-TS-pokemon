@@ -12,7 +12,6 @@ const PokemonList: React.FC<Props> = (props) => {
             <p className="p-1">{name}</p>
             <img className="w-[150px] h-[150px]" src={image} alt="Pokemon" />
          </section>
-         <div></div>
       </div>
    );
 };
