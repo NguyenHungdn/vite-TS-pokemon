@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+   .container-action {
+      @apply overflow-hidden flex justify-center items-center text-center mt-8 flex-wrap h-[100vh];
+   }
+   .container {
+      @apply flex  flex-wrap items-center justify-center m-auto;
+   }
+}
 @layer base {
-    html {
-        font-family: Montserrat, system-ui, sans-serif;
-    }
+   html {
+      font-family: Montserrat, system-ui, sans-serif;
+   }
 }

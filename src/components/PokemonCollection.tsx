@@ -1,27 +1,53 @@
-import { Pokemon } from '~/interface';
+import { Detail, PokemonDetail } from '~/interface';
 import PokemonList from './PokemonList';
 interface Props {
-   pokemons: Pokemon[];
+   pokemons: PokemonDetail[];
+   viewDetail: Detail;
+   setViewDetail: React.Dispatch<React.SetStateAction<Detail>>;
 }
 const PokemonCollection: React.FC<Props> = (props) => {
-   const { pokemons } = props;
+   const { pokemons, viewDetail, setViewDetail } = props;
+   const selectPokemon = (id: number) => {
+      if (!viewDetail.isOpened) {
+         setViewDetail({
+            id: id,
+            isOpened: true,
+         });
+      }
+   };
+
    return (
-      <section className="flex flex-row flex-wrap gap-8 items-center justify-center p-10">
-         {pokemons.map((pokemon) => {
-            return (
-               <div
-                  className=" w-[200px] h-[200px] bg-slate-100 rounded-md"
-                  key={pokemon.id}
-               >
-                  <PokemonList
-                     name={pokemon.name}
-                     id={pokemon.id}
-                     image={pokemon.sprites.front_default}
-                  />
-               </div>
-            );
-         })}
-      </section>
+      <div>
+         <section
+            className={viewDetail.isOpened ? 'container-action  ' : 'container'}
+         >
+            {viewDetail.isOpened ? (
+               <div className="overlay w-[100vw] h-[100vh] overflow-y-hidden "></div>
+            ) : (
+               <div className=""></div>
+            )}
+            {pokemons.map((pokemon) => {
+               return (
+                  <div
+                     className="bg-slate-50 m-3"
+                     key={pokemon.id}
+                     onClick={() => {
+                        selectPokemon(pokemon.id);
+                     }}
+                  >
+                     <PokemonList
+                        name={pokemon.name}
+                        id={pokemon.id}
+                        image={pokemon.sprites.front_default}
+                        abilities={pokemon.abilities}
+                        viewDetail={viewDetail}
+                        setViewDetail={setViewDetail}
+                     />
+                  </div>
+               );
+            })}
+         </section>
+      </div>
    );
 };
 
