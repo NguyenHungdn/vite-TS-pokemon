@@ -21,13 +21,13 @@ const App: React.FC = () => {
       const getPokemon = async () => {
          // gọi api lấy name và url
          const res = await axios.get(
-            ' https://pokeapi.co/api/v2/pokemon?limit=20&offset=20',
+            ' httpss://pokeapi.co/api/v2/pokemon?limit=20&offset=20',
          );
          setNextUrl(res.data.next);
          // lấy name để đưa vào api
          res.data.results.forEach(async (pokemon: Pokemons) => {
             const poke = await axios.get(
-               `http://pokeapi.co/api/v2/pokemon/${pokemon.name}`,
+               `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`,
             );
             //đưa vào mảng để map()
             setPokemons((p) => [...p, poke.data]);
@@ -43,7 +43,7 @@ const App: React.FC = () => {
       setNextUrl(res.data.next);
       res.data.results.forEach(async (pokemon: Pokemons) => {
          const poke = await axios.get(
-            `http://pokeapi.co/api/v2/pokemon/${pokemon.name} `,
+            `https://pokeapi.co/api/v2/pokemon/${pokemon.name} `,
          );
          setPokemons((p) => [...p, poke.data]);
          setLoading(false);
