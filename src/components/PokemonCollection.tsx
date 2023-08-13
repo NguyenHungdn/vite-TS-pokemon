@@ -19,7 +19,11 @@ const PokemonCollection: React.FC<Props> = (props) => {
    return (
       <div>
          <section
-            className={viewDetail.isOpened ? 'container-action  ' : 'container'}
+            className={
+               viewDetail.isOpened
+                  ? 'container-action  '
+                  : 'container  min-h-full '
+            }
          >
             {viewDetail.isOpened ? (
                <div className="overlay w-[100vw] h-[100vh] overflow-y-hidden "></div>
@@ -29,7 +33,7 @@ const PokemonCollection: React.FC<Props> = (props) => {
             {pokemons.map((pokemon) => {
                return (
                   <div
-                     className="bg-slate-50 m-3"
+                     className="bg-slate-50 m-3 rounded-xl"
                      key={pokemon.id}
                      onClick={() => {
                         selectPokemon(pokemon.id);

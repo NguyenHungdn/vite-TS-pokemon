@@ -34,7 +34,10 @@ const PokemonList: React.FC<Props> = (props) => {
          {isSelected ? (
             <section className="absolute top-[30%] left-[41%]  bg-white rounded-lg ">
                <div className="detail-container">
-                  <p className="text-3xl" onClick={closeDetail}>
+                  <p
+                     className="text-3xl cursor-pointer hover:text-neutral-700"
+                     onClick={closeDetail}
+                  >
                      X
                   </p>
                   <div className="flex items-center flex-col">
@@ -57,7 +60,7 @@ const PokemonList: React.FC<Props> = (props) => {
                </div>
             </section>
          ) : (
-            <section className="flex flex-col justify-center items-center  rounded-2xl">
+            <section className="flex flex-col justify-center items-center  rounded-2xl cursor-pointer">
                <p className="">{name}</p>
                <img className="w-[150px] h-[150px]" src={image} alt="Pokemon" />
             </section>
